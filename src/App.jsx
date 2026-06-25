@@ -1,12 +1,11 @@
-
-import './App.css'
+import Navbar from './components/Navbar/Navbar'
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-
+      <Navbar />
     </>
   )
 }
