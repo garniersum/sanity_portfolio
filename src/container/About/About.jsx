@@ -1,45 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, memo } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
-import './About.scss';
 import { urlFor, client } from '../../client';
+import './About.scss';
 
+const QUERY = '*[_type == "about"]';
+
+const AboutSkeleton = () => (
+  <div className="app__profiles" aria-busy="true" aria-label="Cargando perfiles">
+    {[1, 2, 3].map((n) => (
+      <div key={n} className="app__profile-item app__profile-skeleton" />
+    ))}
+  </div>
+);
+
+const AboutCard = memo(({ about, reduce }) => (
+  <article className="app__profile-item">
+    <img
+      src={urlFor(about.imageurl).width(370).height(320).format('webp').url()}
+      alt={about.title ? `Ilustración de ${about.title}` : ''}
+      width={190}
+      height={170}
+      loading="lazy"
+      decoding="async"
+      onError={(e) => { e.currentTarget.style.display = 'none'; }}
+    />
+    <h3 className="bold-text" style={{ marginTop: 20 }}>{about.title}</h3>
+    <p className="p-text" style={{ marginTop: 10 }}>{about.description}</p>
+  </article>
+));
+
+AboutCard.displayName = 'AboutCard';
 
 const About = () => {
-  const [abouts, setAbouts] = useState([]);
+  const [abouts, setAbouts]   = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState(null);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    const query = '*[_type == "about"]'
+    let cancelled = false;
 
-    client.fetch(query)
-      .then((data) => setAbouts(data)) 
+    client.fetch(QUERY)
+      .then((data) => {
+        if (!cancelled) {
+          setAbouts(data);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError('No se pudieron cargar los datos.');
+          setLoading(false);
+        }
+      });
+
+    return () => { cancelled = true; };
   }, []);
-  
 
   return (
     <>
-      <h2 className="head-text">I Know that <span>Good Design</span> <br />means <span>Good Business</span> </h2>
-        <div className="app__profiles">
+      <h2 className="head-text">
+        I Know that <span>Good Design</span>
+        <br />means <span>Good Business</span>
+      </h2>
+
+      {error && (
+        <p className="p-text" role="alert">{error}</p>
+      )}
+
+      {loading && !error && <AboutSkeleton />}
+
+      {!loading && !error && (
+        <div
+          className="app__profiles"
+          role="list"
+          aria-label="Áreas de especialización"
+        >
           {abouts.map((about, index) => (
             <motion.div
-              whileInView={{ opacity: 1 }}
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.5, type: 'tween' }}
-              className="app__profile-item"
               key={about.title + index}
+              role="listitem"
+              whileInView={{ opacity: 1 }}
+              whileHover={reduce ? {} : { scale: 1.1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.5, type: 'tween' }}
+              viewport={{ once: true }}
             >
-            
-            <img src={urlFor(about.imageurl).url()} alt={about.title} /> 
-            
-            <h2 className="bold-text" style={{ marginTop: 20 }}>{about.title}</h2>
-            <p className="p-text" style={{ marginTop: 10 }}>{about.description}</p>
+              <AboutCard about={about} reduce={reduce} />
             </motion.div>
-          ))}        
+          ))}
         </div>
+      )}
     </>
-  )
-}
+  );
+};
 
 export default AppWrap(
   MotionWrap(About, 'app__about'),
