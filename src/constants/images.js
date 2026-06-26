@@ -25,7 +25,7 @@ import about02 from '../assets/about02.png';
 import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
 
-import profile2 from '../assets/profile2.png';
+import profile2 from '../assets/profile2.webp';
 import circle from '../assets/circle.svg';
 import logo from '../assets/logo.ico';
 

@@ -1,0 +1,119 @@
+import { memo } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+
+import { AppWrap } from '../../wrapper';
+import { images } from '../../constants';
+import './Header.scss';
+
+const TECH_ICONS = [
+  { src: images.react,   alt: 'React'   },
+  { src: images.nextjs,  alt: 'Next.js' },
+  { src: images.sassiso, alt: 'Sass'    },
+];
+
+const Header = memo(() => {
+  const reduce = useReducedMotion();
+
+  const slideVariants = {
+    hidden:  { x: reduce ? 0 : -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: reduce ? 0 : 0.5 } },
+  };
+
+  const fadeVariants = {
+    hidden:  { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: reduce ? 0 : 0.5 } },
+  };
+
+  const scaleVariants = {
+    hidden:  { scale: reduce ? 1 : 0, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { duration: reduce ? 0 : 1, ease: 'easeInOut' } },
+  };
+
+  return (
+    <div className="app__header app__flex">
+
+      <motion.div
+        variants={slideVariants}
+        initial="hidden"
+        whileInView="visible"
+        //viewport={{ once: true }}
+        className="app__header-info"
+      >
+        <div className="app__header-badge">
+          <div className="badge-cmp app__flex">
+            <span role="img" aria-label="Waving hand">👋</span>
+            <div style={{ marginLeft: 20 }}>
+              <p className="p-text">Hello, I am</p>
+              <h1 className="head-text">Carlos</h1>
+            </div>
+          </div>
+
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Web Developer</p>
+            <p className="p-text">Freelancer</p>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        variants={fadeVariants}
+        initial="hidden"
+        whileInView="visible"
+        //viewport={{ once: true }}
+        className="app__header-img"
+      >
+        <picture>
+          <source srcSet={images.profile2} type="image/webp" />
+          <img
+            src={images.profile2}
+            alt="Carlos Gómez, Frontend Developer"
+            width="100%"
+            height="100%"
+            fetchPriority="high"
+            decoding="async"
+            className="app__header-img"
+          />
+        </picture>
+        <motion.img
+          variants={scaleVariants}
+          initial="hidden"
+          whileInView="visible"
+          //viewport={{ once: true }}
+          src={images.circle}
+          alt=""
+          aria-hidden="true"
+          className="overlay_circle"
+          width={200}
+          height={200}
+          decoding="async"
+        />
+      </motion.div>
+
+      <motion.div
+        variants={scaleVariants}
+        initial="hidden"
+        whileInView="visible"
+        //viewport={{ once: true }}
+        className="app__header-circles"
+      >
+        {TECH_ICONS.map(({ src, alt }) => (
+          <div className="circle-cmp app__flex" key={alt}>
+            <img
+              src={src}
+              alt={alt}
+              width={128}
+              height={128}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+      </motion.div>
+
+    </div>
+  );
+});
+
+Header.displayName = 'Header';
+
+export default AppWrap(Header, 'home');
