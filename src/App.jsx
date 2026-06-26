@@ -1,4 +1,4 @@
-import Header from './container/Header/Header'
+import { About, Header } from './container';
 import Navbar from './components/Navbar/Navbar'
 import './App.scss'
 
@@ -8,6 +8,7 @@ function App() {
     <>
       <Navbar />
       <Header />
+      <About />
     </>
   )
 }
