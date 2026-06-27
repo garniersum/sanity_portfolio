@@ -74,7 +74,9 @@
   .tag-cmp {
     flex-direction: column;
     margin-top: 2rem;
-
+    display: flex;
+    justify-content: space-between;  
+    
     p {
       width: 100%;
       text-transform: uppercase;

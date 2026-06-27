@@ -1,17 +1,23 @@
 import React from 'react';
-import { BsTwitter, BsInstagram } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { IoDocumentTextOutline } from "react-icons/io5";
+
 
 const SocialMedia = () => (
   <div className="app__social">
     <div>
-      <BsTwitter />
+      <a href="../public/Resume.pdf" target="_blank" aria-label="Resume Carlos Gómez">  
+        <IoDocumentTextOutline />
+      </a>
     </div>
     <div>
-      <FaFacebookF />
+      <a href="https://github.com/garniersum/portfolio/" target="_blank" aria-label="GitHub profile Carlos Gómez">
+        <FaGithub />
+      </a>
     </div>
     <div>
-      <BsInstagram />
+      <FaLinkedin />
     </div>
   </div>
 );

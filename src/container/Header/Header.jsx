@@ -5,6 +5,9 @@ import { AppWrap } from '../../wrapper';
 import { images } from '../../constants';
 import './Header.scss';
 
+import { FaGithub } from "react-icons/fa";
+import { IoDocumentTextOutline } from "react-icons/io5";
+
 const TECH_ICONS = [
   { src: images.react,   alt: 'React'   },
   { src: images.nextjs,  alt: 'Next.js' },
