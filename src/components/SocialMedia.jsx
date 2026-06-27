@@ -7,7 +7,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 const SocialMedia = () => (
   <div className="app__social">
     <div>
-      <a href="../../public/Resume.pdf" target="_blank" aria-label="Resume Carlos Gómez">  
+      <a href="./Resume.pdf" target="_blank" aria-label="Resume Carlos Gómez">  
         <IoDocumentTextOutline />
       </a>
     </div>
