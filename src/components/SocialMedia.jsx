@@ -17,7 +17,9 @@ const SocialMedia = () => (
       </a>
     </div>
     <div>
-      <FaLinkedin />
+      <a href="https://www.linkedin.com/in/garniersum/" target="_blank" aria-label="LinkedIn profile Carlos Gómez">
+        <FaLinkedin />
+      </a>
     </div>
   </div>
 );

@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { HiMenuAlt4, HiX, HiMoon, HiSun } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { images } from '../../constants';
+import { useTheme } from '../../context/ThemeContext';
 import './Navbar.scss';
 
 const NAV_ITEMS = ['home', 'about', 'work', 'skills', 'contact'];
@@ -15,6 +16,7 @@ const menuVariants = {
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   const openMenu = useCallback(() => setToggle(true), []);
   const closeMenu = useCallback(() => setToggle(false), []);
@@ -34,6 +36,16 @@ const Navbar = () => {
         ))}
       </ul>
 
+      <div className="app__navbar-actions">
+        <button 
+          className="theme-toggle" 
+          onClick={toggleTheme}
+          aria-label="Toggle dark mode"
+        >
+          {isDark ? <HiSun /> : <HiMoon />}
+        </button>
+      </div>
+
       <div className="app__navbar-menu">
         <HiMenuAlt4 onClick={openMenu} />
 
@@ -47,6 +59,13 @@ const Navbar = () => {
               exit="exit"
             >
               <HiX onClick={closeMenu} />
+              <button 
+                className="theme-toggle mobile" 
+                onClick={toggleTheme}
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? <HiSun /> : <HiMoon />}
+              </button>
               <ul>
                 {NAV_ITEMS.map((item) => (
                   <li key={item}>

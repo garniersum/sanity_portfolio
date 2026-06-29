@@ -1,6 +1,6 @@
 #home {
   position: relative;
-  background: url("../../assets/bgIMG.png");
+  background: var(--primary-color);
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
@@ -75,8 +75,8 @@
     flex-direction: column;
     margin-top: 2rem;
     display: flex;
-    justify-content: space-between;  
-    
+    justify-content: space-between;
+
     p {
       width: 100%;
       text-transform: uppercase;
@@ -181,6 +181,12 @@
   position: relative;
 
   will-change: opacity;
+
+  .profile-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
 
   img {
     width: 100%;
