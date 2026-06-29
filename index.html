@@ -9,6 +9,11 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://imcarlosgomez.vercel.app/" />
 
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <link rel="icon" type="image/svg+xml" href="/logo.ico" />
     <link rel="modulepreload" href="/src/main.jsx" />
 
@@ -17,6 +22,25 @@
     <meta property="og:description" content="Explora mis proyectos de desarrollo web y experiencia profesional." />
     <meta property="og:image" content="/og-image.jpg" />
     <meta property="og:url" content="https://imcarlosgomez.vercel.app" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Carlos Gómez",
+      "jobTitle": "Frontend Developer",
+      "url": "https://imcarlosgomez.vercel.app",
+      "email": "carlos.gomez.mobile@gmail.com",
+      "telephone": "+502 4568-5308",
+      "sameAs": [
+        "https://www.linkedin.com/in/garniersum/",
+        "https://github.com/garniersum"
+      ],
+      "knowsAbout": ["React", "JavaScript", "Vite", "Sanity CMS", "SCSS", "Framer Motion"],
+      "description": "Frontend Developer specializing in modern web technologies with expertise in React, Vite, and Sanity CMS."
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

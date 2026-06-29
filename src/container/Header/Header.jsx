@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { memo, useState, useEffect } from 'react';
+import { motion, useReducedMotion, useAnimation } from 'framer-motion';
 
 import { AppWrap } from '../../wrapper';
 import { images } from '../../constants';
@@ -19,17 +19,29 @@ const Header = memo(() => {
 
   const slideVariants = {
     hidden:  { x: reduce ? 0 : -100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: reduce ? 0 : 0.5 } },
+    visible: { x: 0, opacity: 1, transition: { duration: reduce ? 0 : 0.5, type: 'spring' } },
   };
 
   const fadeVariants = {
-    hidden:  { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: reduce ? 0 : 0.5 } },
+    hidden:  { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduce ? 0 : 0.6, delay: 0.2 } },
   };
 
   const scaleVariants = {
     hidden:  { scale: reduce ? 1 : 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: reduce ? 0 : 1, ease: 'easeInOut' } },
+    visible: { scale: 1, opacity: 1, transition: { duration: reduce ? 0 : 1, ease: 'easeInOut', delay: 0.4 } },
+  };
+
+  const floatVariants = {
+    hidden:  { y: 0 },
+    visible: { 
+      y: [-10, 10, -10],
+      transition: { 
+        duration: 3, 
+        repeat: Infinity, 
+        ease: 'easeInOut' 
+      }
+    },
   };
 
   return (
@@ -65,18 +77,25 @@ const Header = memo(() => {
         //viewport={{ once: true }}
         className="app__header-img"
       >
-        <picture>
-          <source srcSet={images.profile2} type="image/webp" />
-          <img
-            src={images.profile2}
-            alt="Carlos Gómez, Frontend Developer"
-            width="100%"
-            height="100%"
-            fetchPriority="high"
-            decoding="async"
-            className="app__header-img"
-          />
-        </picture>
+        <motion.div
+          variants={floatVariants}
+          initial="hidden"
+          animate="visible"
+          className="profile-wrapper"
+        >
+          <picture>
+            <source srcSet={images.profile2} type="image/webp" />
+            <img
+              src={images.profile2}
+              alt="Carlos Gómez, Frontend Developer"
+              width="100%"
+              height="100%"
+              fetchPriority="high"
+              decoding="async"
+              className="app__header-img"
+            />
+          </picture>
+        </motion.div>
         <motion.img
           variants={scaleVariants}
           initial="hidden"

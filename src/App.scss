@@ -1,6 +1,26 @@
+:root {
+  --primary-color: #edf2f8;
+  --white-color: #ffffff;
+  --black-color: #051d34;
+  --gray-color: #6b7c85;
+  --lightGray-color: #e6e6e6;
+  --secondary-color: #313BAC;
+  --font-base: 'Poppins', sans-serif;
+}
+
+[data-theme="dark"] {
+  --primary-color: #1a1a1a;
+  --white-color: #2d2d2d;
+  --black-color: #ffffff;
+  --gray-color: #b0b0b0;
+  --lightGray-color: #404040;
+  --secondary-color: #6c7ae0;
+}
+
 .app {
   background-color: var(--primary-color);
   font-family: var(--font-base);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .app__whitebg {
