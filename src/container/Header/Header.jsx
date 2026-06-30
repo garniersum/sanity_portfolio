@@ -62,10 +62,15 @@ const Header = memo(() => {
               <h1 className="head-text">Carlos</h1>
             </div>
           </div>
-
-          <div className="tag-cmp app__flex">
-            <p className="p-text">Web Developer</p>
-            <p className="p-text">Freelancer</p>
+        </div>
+        <div className="app__header-CTA">
+          <div className="tag-resume">
+            <a href="/resume.pdf" target="_blank">Resume</a>       
+          </div>
+          <div className="tag-github">
+            <a href="https://github.com/garniersum/portfolio/" target="_blank" className="p-text" aria-label="GitHub profile Carlos Gómez">
+              <FaGithub />
+            </a>
           </div>
         </div>
       </motion.div>
