@@ -82,7 +82,7 @@
     margin: 2rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: #fff;
+    background-color: var(--white-color);
     color: #000;
 
     cursor: pointer;
@@ -176,6 +176,7 @@
   width: 100%;
   position: relative;
   flex-direction: column;
+  
 
   h4 {
     margin-top: 1rem;
@@ -186,7 +187,7 @@
     position: absolute;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--white-color);
     top: -25px;
   }
 }

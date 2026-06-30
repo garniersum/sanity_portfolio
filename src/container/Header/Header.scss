@@ -183,6 +183,8 @@
   will-change: opacity;
 
   .profile-wrapper {
+    position: relative;
+    z-index: 1;           // por encima del overlay_circle
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -191,7 +193,7 @@
   img {
     width: 100%;
     object-fit: contain;
-    z-index: 1;
+    bottom: 12px;
   }
 
   .overlay_circle {
