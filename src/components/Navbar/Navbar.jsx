@@ -17,9 +17,9 @@ const NAV_ICONS = {
 };
 
 const menuVariants = {
-  hidden: { x: 300, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { duration: 0.85, ease: 'easeOut' } },
-  exit: { x: 300, opacity: 0, transition: { duration: 0.4, ease: 'easeIn' } },
+  hidden: { y: 300, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.45, ease: 'easeOut' } },
+  exit: { y: 300, opacity: 0, transition: { duration: 0.3, ease: 'easeIn' } },
 };
 
 const Navbar = () => {

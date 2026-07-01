@@ -102,7 +102,7 @@
   .tag-resume{
     display: flex;
     justify-content: flex-start;
-    padding: 0.3rem 1.5rem;
+    padding: 0.3rem 1.1rem;
     background: var(--white-color);
     border-radius: 16px 0 0 16px;
     flex-direction: row;
@@ -112,7 +112,7 @@
   }
   
   .tag-github {    
-    padding: 0.3rem 0.3rem;
+    padding: 0.45rem 0.45rem;
     background: var(--white-color);
     border-radius: 50%;
     border-color: var(--primary-color);
@@ -124,7 +124,7 @@
         
     flex-direction: row;
     margin-top: 1rem;
-    margin-left: -0.8rem;
+    margin-left: -0.4rem;
     margin-right: 0.2rem;
     display: flex;
     
