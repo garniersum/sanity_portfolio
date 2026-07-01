@@ -90,10 +90,11 @@
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
-  margin-bottom: -3rem;
+  margin-bottom: -2rem;
   
   a{
-    font-weight: 500;
+    //font-weight: 500;
+    font-size: 1.1rem;
     text-decoration: none;
     color: var(--CTA-color);
   }
@@ -101,9 +102,9 @@
   .tag-resume{
     display: flex;
     justify-content: flex-start;
-    padding: 0.55rem 1.5rem;
+    padding: 0.3rem 1.5rem;
     background: var(--white-color);
-    border-radius: 20px 0 0 20px;
+    border-radius: 16px 0 0 16px;
     flex-direction: row;
     width: auto;
     margin-top: 1rem;
@@ -111,28 +112,30 @@
   }
   
   .tag-github {    
-    padding: 0.4rem 0.4rem;
+    padding: 0.3rem 0.3rem;
     background: var(--white-color);
     border-radius: 50%;
     border-color: var(--primary-color);
-    border-width: 6px;
+    border-width: 8px;
     border-style: solid;
     flex-direction: row;
     width: auto;
     
-    //box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);    
+        
     flex-direction: row;
     margin-top: 1rem;
-    margin-left: -0.5rem;
+    margin-left: -0.8rem;
     margin-right: 0.2rem;
     display: flex;
     
     a{
-      font-size: 2rem;
+      font-size: 2.2rem;
       display: flex;
       justify-content: center;
       align-items: center;      
       text-decoration: none;
+      //filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));  
+      //box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); 
     }
   }
 

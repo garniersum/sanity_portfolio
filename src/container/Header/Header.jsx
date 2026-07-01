@@ -66,12 +66,12 @@ const Header = memo(() => {
         <div className="app__header-CTA">
           <div className="tag-resume">
             <a href="/resume.pdf" target="_blank">Resume</a>       
-          </div>
+          </div>          
           <div className="tag-github">
             <a href="https://github.com/garniersum/portfolio/" target="_blank" className="p-text" aria-label="GitHub profile Carlos Gómez">
               <FaGithub />
             </a>
-          </div>
+          </div>        
         </div>
       </motion.div>
 
